@@ -291,20 +291,20 @@ def runseach(board, player, theirmove):
         return losPos
     
     rowLast = row_num(theirmove, board) + 1
-    ##board[row_num(theirmove, board) + 1][theirmove - 1] == "." and row_num(theirmove + 1, board) == rowLast and board[rowLast][theirmove] == board[row_num(theirmove + 1, board)][theirmove + 1])
+
     ## piece to left space on right
     if(board[rowLast].count(".") >= 4 and theirmove != 6 and theirmove != 0 and board[rowLast][theirmove - 1] == determine_piece(not player) and board[rowLast][theirmove + 1] == "."):
         print("THIS WENT IN")
         result = checkTwoInRow(board, theirmove, theirmove + 1, player)
         print("Result", result)
-        if result != -1:
+        if result != -1 and testoneup(player, result, board):
             return result
-   ## piece to right space on left    
+    ## piece to right space on left    
     elif (board[rowLast].count(".") >= 4 and theirmove != 6 and theirmove != 0 and board[rowLast][theirmove + 1] == determine_piece(not player) and board[rowLast][theirmove - 1] == "."):
         print("THIS WENT IN")
         result = checkTwoInRow(board, theirmove, theirmove + 1, player)
         print("Result", result)
-        if result != -1:
+        if result != -1 and testoneup(player, result, board):
             return result
     
     n = 0
